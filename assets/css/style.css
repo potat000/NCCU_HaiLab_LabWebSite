@@ -1,0 +1,437 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #fafafa;
+}
+
+/* Existing card styles (keep for compatibility) */
+.card-noborder {
+    border: 0;
+}
+
+blockquote {
+    padding: 0.5rem 1rem;
+    border-left: 0.25rem solid #eceeef;
+    font-size: 1rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.spaced-list li {
+    margin-bottom: 10px;
+}
+
+/* Full Screen Banner */
+#banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    height: calc(100vh - 55px);
+    margin-top: 55px;
+    min-height: 35em;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    background: #0D2331;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#banner .inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+#banner h2 {
+    transform: scale(1);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    display: inline-block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    opacity: 1;
+    padding: 0.35em 1em;
+    position: relative;
+    z-index: 1;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+#banner h2:before, #banner h2:after {
+    transition: width 1.2s ease;
+    transition-delay: 0.5s;
+    background: white;
+    content: '';
+    display: block;
+    height: 3px;
+    position: absolute;
+    width: 100%;
+}
+
+#banner h2:before {
+    top: 0;
+    left: 0;
+}
+
+#banner h2:after {
+    bottom: 0;
+    right: 0;
+}
+
+#banner p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.75s ease, opacity 0.75s ease;
+    transition-delay: 1s;
+}
+
+/* Learn More Button */
+.learn-more {
+    transition: transform 0.75s ease, opacity 0.75s ease;
+    transition-delay: 3s;
+    transform: translateY(0);
+    border: none;
+    background: rgba(37, 99, 235, 0.9);
+    color: white;
+    font-size: 0.9em;
+    padding: 12px 24px;
+    border-radius: 25px;
+    letter-spacing: 0.1em;
+    margin-top: 40px;
+    opacity: 1;
+    outline: 0;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    width: auto;
+    max-width: 200px;
+    white-space: nowrap;
+}
+
+.learn-more:hover {
+    background: rgba(37, 99, 235, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+.learn-more:after {
+    content: ' ↓';
+    margin-left: 8px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.learn-more:hover:after {
+    transform: translateY(3px);
+}
+
+/* Background image layer */
+#banner:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(13, 35, 49, 0.6), rgba(13, 35, 49, 0.5)), url('./../../images/lab.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 1;
+    transition: opacity 1.5s ease;
+    transition-delay: 2s;
+    z-index: 0;
+}
+
+/* Loading overlay */
+#banner:after {
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out;
+    transition-delay: 0.5s;
+    content: '';
+    background: #0D2331;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    z-index: 3;
+}
+
+/* Preload states */
+body.is-preload #banner h2 {
+    transform: scale(0.95);
+    opacity: 0;
+}
+
+body.is-preload #banner h2:before, 
+body.is-preload #banner h2:after {
+    width: 0;
+}
+
+body.is-preload #banner p {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+body.is-preload #banner .learn-more {
+    transform: translateY(30px);
+    opacity: 0;
+}
+
+body.is-preload #banner:before {
+    opacity: 0;
+}
+
+body.is-preload #banner:after {
+    opacity: 1;
+}
+
+/* Research Areas Styles */
+.research-section {
+    padding: 100px 0;
+    background: #fafafa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0D2331;
+    margin-bottom: 20px;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #64748b;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.research-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #e5e7eb;
+    display: block;
+}
+
+.research-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+}
+
+.research-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #2563eb;
+    color: white;
+    border-radius: 0px 16px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.research-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.research-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.research-card:hover .research-image img {
+    transform: scale(1.05);
+}
+
+.research-content {
+    padding: 30px;
+}
+
+.research-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #0D2331;
+}
+
+.research-description {
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.research-arrow {
+    display: inline-block;
+    margin-top: 15px;
+    color: #2563eb;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.research-card:hover .research-arrow {
+    transform: translateX(5px);
+}
+
+/* Footer Styles */
+.footer {
+    background: #0D2331;
+    color: white;
+    padding: 60px 0 30px;
+    margin-top: 100px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer p {
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    #banner {
+        padding: 7em 3em 5em 3em;
+        height: auto;
+        min-height: calc(100vh - 55px);
+        margin-top: 55px;
+    }
+
+    #banner:before {
+        background-attachment: scroll;
+    }
+
+    #banner h2 {
+        font-size: 2.5rem;
+    }
+
+    #banner p br {
+        display: none;
+    }
+
+    .learn-more {
+        font-size: 0.8em;
+        padding: 10px 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .research-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .research-section {
+        padding: 80px 0;
+    }
+}
