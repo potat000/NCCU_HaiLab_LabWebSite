@@ -71,42 +71,84 @@ blockquote {
     text-align: center;
 }
 
+/* Banner 標題 - 文字模糊淡入效果 */
 #banner h2 {
-    transform: scale(1);
-    transition: transform 0.5s ease, opacity 0.5s ease;
     display: inline-block;
     font-size: 3.5rem;
     font-weight: 700;
-    opacity: 1;
-    padding: 0.35em 1em;
-    position: relative;
-    z-index: 1;
     color: white;
     line-height: 1.2;
     margin-bottom: 20px;
+    padding: 0.35em 1em;
+    position: relative;
+    z-index: 1;
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0px);
+    transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.7s ease,
+                filter 0.7s ease;
 }
 
-#banner h2:before, #banner h2:after {
-    transition: width 1.2s ease;
-    transition-delay: 0.5s;
-    background: white;
+/* 上下線條 - 漸層色彩與光暈效果 */
+#banner h2:before, 
+#banner h2:after {
     content: '';
     display: block;
     height: 3px;
     position: absolute;
     width: 100%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5),
+                0 0 16px rgba(37, 99, 235, 0.35);
+    transition: width 1.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                box-shadow 0.8s ease;
+    animation: glow-pulse 2.5s ease-in-out 1.8s infinite alternate;
 }
 
+/* 上方線條：藍到白的漸層，從中心向兩側展開 */
 #banner h2:before {
     top: 0;
     left: 0;
+    background: linear-gradient(
+        90deg, 
+        rgba(37, 99, 235, 0.9) 0%, 
+        rgba(100, 149, 237, 1) 25%,
+        rgba(255, 255, 255, 1) 50%, 
+        rgba(200, 220, 255, 0.8) 75%,
+        rgba(37, 99, 235, 0.3) 100%
+    );
+    transition-delay: 0.7s;
 }
 
+/* 下方線條：白到藍的漸層，從中心向兩側展開 */
 #banner h2:after {
     bottom: 0;
     right: 0;
+    background: linear-gradient(
+        90deg, 
+        rgba(37, 99, 235, 0.3) 0%,
+        rgba(200, 220, 255, 0.8) 25%, 
+        rgba(255, 255, 255, 1) 50%,
+        rgba(100, 149, 237, 1) 75%, 
+        rgba(37, 99, 235, 0.9) 100%
+    );
+    transition-delay: 0.9s;
 }
 
+/* 光暈脈動動畫 */
+@keyframes glow-pulse {
+    0% { 
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5),
+                    0 0 16px rgba(37, 99, 235, 0.35);
+    }
+    100% { 
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.65),
+                    0 0 24px rgba(37, 99, 235, 0.45),
+                    0 0 36px rgba(37, 99, 235, 0.2);
+    }
+}
+
+/* Banner 副標題 */
 #banner p {
     font-size: 1.25rem;
     color: rgba(255, 255, 255, 0.9);
@@ -121,23 +163,19 @@ blockquote {
 
 /* Learn More Button */
 .learn-more {
-    transition: transform 0.75s ease, opacity 0.75s ease;
-    transition-delay: 3s;
-    transform: translateY(0);
     border: none;
     background: rgba(37, 99, 235, 0.9);
     color: white;
     font-size: 0.9em;
+    font-weight: 600;
     padding: 12px 24px;
     border-radius: 25px;
     letter-spacing: 0.1em;
     margin-top: 40px;
-    opacity: 1;
-    outline: 0;
     text-align: center;
     text-transform: uppercase;
     cursor: pointer;
-    font-weight: 600;
+    outline: 0;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
     position: relative;
@@ -146,6 +184,10 @@ blockquote {
     width: auto;
     max-width: 200px;
     white-space: nowrap;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.75s ease, opacity 0.75s ease;
+    transition-delay: 3s;
 }
 
 .learn-more:hover {
@@ -165,7 +207,7 @@ blockquote {
     transform: translateY(3px);
 }
 
-/* Background image layer */
+/* 背景圖片層 */
 #banner:before {
     content: '';
     position: absolute;
@@ -183,11 +225,9 @@ blockquote {
     z-index: 0;
 }
 
-/* Loading overlay */
+/* 載入遮罩層 */
 #banner:after {
     pointer-events: none;
-    transition: opacity 1.5s ease-in-out;
-    transition-delay: 0.5s;
     content: '';
     background: #0D2331;
     display: block;
@@ -197,18 +237,28 @@ blockquote {
     left: 0;
     top: 0;
     opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    transition-delay: 0.5s;
     z-index: 3;
 }
 
-/* Preload states */
+/* ========== 預載入狀態 ========== */
 body.is-preload #banner h2 {
-    transform: scale(0.95);
+    transform: scale(0.88);
     opacity: 0;
+    filter: blur(12px);
 }
 
-body.is-preload #banner h2:before, 
+body.is-preload #banner h2:before {
+    width: 0;
+    left: 50%;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+}
+
 body.is-preload #banner h2:after {
     width: 0;
+    right: 50%;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
 }
 
 body.is-preload #banner p {
