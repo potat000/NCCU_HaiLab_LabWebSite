@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>113356007_Portfolio</title>
+  <!-- Requirement: external CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="main-container">
+    <!-- 左側面板：個人資訊 -->
+    <aside class="left-panel">
+      <div class="photo-panel">
+        <!-- 學生可以換成自己的照片路徑 -->
+        <img src="images/profile.jpg" alt="Profile photo">
+      </div>
+
+      <div class="text-content">
+        <h1 id="pageTitle">Jolin Yang</h1>
+        <p class="tagline">NCCU MIS Student</p>
+
+        <h2 class="section-title">About Me</h2>
+        <p class="about-text">
+          I am a student in the Department of Management Information Systems at NCCU.
+          I like programming, UX design, and data analysis.
+        </p>
+
+        <h2 class="section-title">Contact</h2>
+        <ul class="contact-list">
+          <li>Email: <a class="link" href="mailto:113356007@nccu.edu.tw">113356007@nccu.edu.tw</a></li>
+          <li>GitHub: <a class="link" href="https://github.com/your-id" target="_blank">your-id</a></li>
+        </ul>
+
+        <!-- 學校 logo，可選 -->
+        <img class="nccu-logo" src="images/nccu_logo.png" alt="NCCU Logo">
+      </div>
+    </aside>
+
+    <!-- 右側面板：三個區塊 -->
+    <main class="right-panel">
+      <!-- Education -->
+      <section class="section education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline-item">
+          <span class="year">2023 - Now</span>
+          <span class="description">M.S. in Management Information Systems, NCCU</span>
+        </div>
+        <div class="timeline-item">
+          <span class="year">2019 - 2023</span>
+          <span class="description">B.B.A. in Management Information Systems, NCCU</span>
+        </div>
+      </section>
+
+      <!-- Homework List -->
+      <section class="section homework">
+        <h2 class="section-title">Homework & Lab</h2>
+
+        <div class="study-history">
+          <h3>Learning History</h3>
+          <ul>
+            <li>Programming Languages: Python, C, HTML, CSS</li>
+            <li>Courses: Introduction to CS, Data Structures, UX Design</li>
+          </ul>
+        </div>
+
+        <div class="hw-lab-wrapper">
+          <div class="hw-column">
+            <h3>Homework</h3>
+            <ul class="hw-list">
+              <li><a class="link" href="#">HW1 – Basic HTML Page</a></li>
+              <li><a class="link" href="#">HW2 – Image & Link Practice</a></li>
+              <li><a class="link" href="#">HW3 – Portfolio Table</a></li>
+            </ul>
+          </div>
+
+          <div class="lab-column">
+            <h3>Lab</h3>
+            <ul class="hw-list">
+              <li><a class="link" href="#">Lab1 – Git & GitHub Intro</a></li>
+              <li><a class="link" href="#">Lab2 – HTML Practice</a></li>
+              <li><a class="link" href="#">Lab3 – CSS Navbar</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Favorite Music -->
+      <section class="section music">
+        <h2 class="section-title">Favorite Music</h2>
+        <div class="music-grid">
+          <!-- 學生可以換成自己的歌曲連結與封面 -->
+          <a href="https://www.youtube.com/watch?v=xxxx1" target="_blank" class="music-item">
+            <img src="images/song1.jpg" alt="Song 1">
+            <p class="song-title">Song Title 1</p>
+          </a>
+          <a href="https://www.youtube.com/watch?v=xxxx2" target="_blank" class="music-item">
+            <img src="images/song2.jpg" alt="Song 2">
+            <p class="song-title">Song Title 2</p>
+          </a>
+          <a href="https://www.youtube.com/watch?v=xxxx3" target="_blank" class="music-item">
+            <img src="images/song3.jpg" alt="Song 3">
+            <p class="song-title">Song Title 3</p>
+          </a>
+          <a href="https://www.youtube.com/watch?v=xxxx4" target="_blank" class="music-item">
+            <img src="images/song4.jpg" alt="Song 4">
+            <p class="song-title">Song Title 4</p>
+          </a>
+        </div>
+
+        <p class="music-note">
+          These four songs always help me stay focused when I am coding and doing homework.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- 簡單 footer（也可以當作 bonus 要求） -->
+  <footer class="page-footer">
+    © 2025 NCCU Introduction to Computer Science
+  </footer>
+</body>
+</html>
